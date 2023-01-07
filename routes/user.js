@@ -1,24 +1,16 @@
-
 const express = require('express');
-const userController = require('../controllers/user')
-
+// const mongoose = require('mongoose');
+const User = require('../models/User');
 const router = express();
 
-
-router.route('/users')
-    .get(userController.getUsers)
-
-router.route('/user')
-    .delete(userController.deleteUser)
-    // .get(userController.getUsers)
-
-router.route('/togglerole')
-    .get(userController.toggleRole)
-
-router.route('/signin')
-    .post(userController.postSignIn)
-
-router.route('/signup')
-    .post(userController.postSignUp)
+router.get('/users', async (req,res) =>  {
+    try {
+        const user = await User.find()
+        // const product = await Product.find();
+        res.status(200).json(user)     
+    } catch (error) {
+        res.status(400).json({message: error.message});
+    }
+})
 
 module.exports = router;

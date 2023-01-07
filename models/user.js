@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
+
 const Schema = mongoose.Schema;
 
-//Schéma Mongodb pour la collection d'utilisateurs
-const userSchema = new Schema({
+const User = mongoose.model('User', new Schema({
     email:String,
     password:String,
     firstName:String,
@@ -15,6 +15,6 @@ const userSchema = new Schema({
     gender: String,
     role:{type:String,default:'visitor'},
     blocked:{type:Boolean,default:false}
-})
+}));
 
-module.exports = mongoose.model('user', userSchema)
+module.exports = User;

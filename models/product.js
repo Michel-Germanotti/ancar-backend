@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
+
 const Schema = mongoose.Schema;
 
-// Schéma Mongodb pour la collection d'utilisateurs
-const productSchema = new Schema({
+const Product = mongoose.model('Product', new Schema({
     title:String,
     price:Number,
     stock:Number,
@@ -12,6 +12,6 @@ const productSchema = new Schema({
     feature:String,
     description:String,
     soldBy:String
-})
+}));
 
-module.exports = mongoose.model('product', productSchema)
+module.exports = Product;
